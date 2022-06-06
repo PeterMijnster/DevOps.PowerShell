@@ -10,13 +10,13 @@ if ($null -ne $UserFilter) {$Users = Get-AzureADUser -Filter $UserFilter}
 if ($null -ne $UserGroup) {$Users = Get-AzureADGroup -SearchString $UserGroup | Get-AzureADGroupMember}
 
 #Get Mailbox Permissions
-Get-MailboxPermission -Identity $Mailbox | fl -Property User, AccessRights
+(($null -eq $GroupDisplayName) -and ($null -eq $UserDisplayName)) {Get-MailboxPermission -Identity $Mailbox | fl -Property User, AccessRights}
 
 #Get Mailbox Recipient Permissions
-Get-RecipientPermission -Identity $Mailbox | fl -Property Trustee, AccessRights
+(($null -eq $GroupDisplayName) -and ($null -eq $UserDisplayName)) {Get-RecipientPermission -Identity $Mailbox | fl -Property Trustee, AccessRights}
 
 #Get Mailbox Permissions and Recipient Permissions
-if ($null -ne $User) {
+if ($null -ne $Users) {
     $Mailboxes = Get-Mailbox
     foreach ($Mailbox in $Mailboxes) {
         foreach ($User in $Users) {Get-MailboxPermission -Identity $Mailbox.Name -User $User.UserPrincipalName | Format-Table AccessRights, Identity -ErrorAction SilentlyContinue}
