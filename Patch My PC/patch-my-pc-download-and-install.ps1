@@ -38,7 +38,7 @@ if (!(Test-Path $InstallationLocation\PatchMyPC.exe)) {
     $Shortcut.TargetPath = $ShortcutTarget
     $Shortcut.Save()
 
-    #Start Patch My PC To Apply Setting and Installation Applications Silently
+    #Start Patch My PC To Apply Settings and Install Applications Silently
     Start-Process "$InstallationLocation\PatchMyPC.exe" -ArgumentList "/Silent"
     }
 
