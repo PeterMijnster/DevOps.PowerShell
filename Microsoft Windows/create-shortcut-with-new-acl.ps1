@@ -6,7 +6,7 @@ $Application = ""
 $ApplicationArguments = ""
 $ShortcutName = ""
 
-#Shortcust Custom ACL Variables
+#Shortcut Custom ACL Variables
 $Identity = "" #Everyone
 $FileSystemRights = "" #FullControl
 
