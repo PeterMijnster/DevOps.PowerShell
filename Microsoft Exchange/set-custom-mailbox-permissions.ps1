@@ -12,8 +12,8 @@ $UserGroup = "" #Use the 'DisplayName' value of the group
 if ($null -ne $UserFilter) {$Users = Get-AzureADUser -Filter $UserFilter}
 if ($null -ne $UserGroup) {$Users = Get-AzureADGroup -SearchString $UserGroup | Get-AzureADGroupMember}
 
-#Set Full Access Rights
+#Set Mailbox Permissions
 if ($null -ne $MailboxPermission) {foreach($User in $Users) {Add-MailboxPermission -Identity $Mailbox -User $User -AccessRights $MailboxPermission -InheritanceType All -AutoMapping $MailboxAutomap}}
 
-#Set Send As Rights
+#Set Mailbox Recipient Permissions
 if ($null -ne $MailboxRecipientPermission) {foreach($User in $Users) {Add-RecipientPermission -Identity $Mailbox  -Trustee $User -AccessRights $MailboxRecipientPermission}}
