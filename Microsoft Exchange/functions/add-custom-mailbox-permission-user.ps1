@@ -17,4 +17,4 @@ function Add-CustomMailboxPermissionUser {
     if ($null -ne $MailboxRecipientPermission) {Add-RecipientPermission -Identity $Mailbox -Trustee $User.UserPrincipalName -AccessRights $MailboxRecipientPermission -Confirm:$false}
     }
 
-Add-CustomMailboxPermissionUser -Mailbox "Sound of Data - Team Development" -MailboxAutomap $false -MailboxPermission "FullAccess" -MailboxRecipientPermission "SendAs" -UserDisplayName "Peter Mijnster"
+Add-CustomMailboxPermissionUser -Mailbox "OneTribe - Info" -MailboxAutomap $false -MailboxPermission "FullAccess" -MailboxRecipientPermission "SendAs" -UserDisplayName "Peter Mijnster"
