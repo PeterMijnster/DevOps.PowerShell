@@ -1,4 +1,4 @@
-function Add-CustomMailboxPermissionUser {
+function Add-CustomMailboxPermissionsUser {
     Param (
         $Mailbox,
         $MailboxAutomap,
@@ -27,5 +27,5 @@ function Add-CustomMailboxPermissionUser {
 }
 
 #Examples
-Add-CustomMailboxPermissionUser -Mailbox "OneTribe - DevOps" -MailboxAutomap $false -MailboxPermission "FullAccess" -MailboxRecipientPermission "SendAs" -GroupDisplayName "OneTribe - DevOps"
-Add-CustomMailboxPermissionUser -Mailbox "OneTribe - DevOps" -MailboxAutomap $false -MailboxPermission "FullAccess" -MailboxRecipientPermission "SendAs" -UserDisplayName "Peter Mijnster"
+Add-CustomMailboxPermissionsUser -Mailbox "OneTribe - DevOps" -MailboxAutomap $false -MailboxPermission "FullAccess" -MailboxRecipientPermission "SendAs" -GroupDisplayName "OneTribe - DevOps"
+Add-CustomMailboxPermissionsUser -Mailbox "OneTribe - DevOps" -MailboxAutomap $false -MailboxPermission "FullAccess" -MailboxRecipientPermission "SendAs" -UserDisplayName "Peter Mijnster"
