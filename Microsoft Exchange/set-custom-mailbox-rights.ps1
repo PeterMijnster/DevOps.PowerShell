@@ -1,8 +1,8 @@
 #Custom Variables
-$Automap = $false
 $Mailbox = ""
+$MailboxAutomap = $false
 $MailboxPermission = "" #FullAccess, ChangePermission, ReadPermission
-RecipientPermission "" #SendAs
+$MailboxRecipientPermission "" #SendAs
 $UserFilter = ""
 $UserGroup = ""
 
@@ -11,7 +11,7 @@ if ($null -ne $UserFilter) {$Users = Get-AzureADUser -Filter $UserFilter}
 if ($null -ne $UserGroup) {$Users = Get-AzureADGroup -SearchString $UserGroup | Get-AzureADGroupMember}
 
 #Set Full Access Rights
-if ($null -ne $MailboxPermission) {foreach($User in $Users) {Add-MailboxPermission -Identity $Mailbox -User $User -AccessRights $MailboxPermission -InheritanceType All -AutoMapping $Automap}}
+if ($null -ne $MailboxPermission) {foreach($User in $Users) {Add-MailboxPermission -Identity $Mailbox -User $User -AccessRights $MailboxPermission -InheritanceType All -AutoMapping $MailboxAutomap}}
 
 #Set Send As Rights
-if ($null -ne $RecipientPermission) {foreach($User in $Users) {Add-RecipientPermission -Identity $Mailbox  -Trustee $User -AccessRights SendAs}}
+if ($null -ne $MailboxRecipientPermission) {foreach($User in $Users) {Add-RecipientPermission -Identity $Mailbox  -Trustee $User -AccessRights $MailboxRecipientPermission}}
