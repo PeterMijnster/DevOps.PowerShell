@@ -2,7 +2,7 @@
 $Mailbox = "" #User the 'DisplayName' value of the mailbox
 $MailboxAutomap = $false #Allowed values: $true, $false
 $MailboxPermission = "" #Allowed values: FullAccess, ChangePermission, ReadPermission
-$MailboxRecipientPermission "" #Allowed values: SendAs
+$MailboxRecipientPermission = "" #Allowed values: SendAs
 
 #Custom User Variables (Choose One)
 $UserFilter = "" #Exmaple: DisplayName eq 'Peter Mijnster' or startswith(JobTitle,'IT')
@@ -12,8 +12,8 @@ $UserGroup = "" #Use the 'DisplayName' value of the group
 if ($null -ne $UserFilter) {$Users = Get-AzureADUser -Filter $UserFilter}
 if ($null -ne $UserGroup) {$Users = Get-AzureADGroup -SearchString $UserGroup | Get-AzureADGroupMember}
 
-#Set Mailbox Permissions
+#Add Mailbox Permissions
 if ($null -ne $MailboxPermission) {foreach($User in $Users) {Add-MailboxPermission -Identity $Mailbox -User $User -AccessRights $MailboxPermission -InheritanceType All -AutoMapping $MailboxAutomap}}
 
-#Set Mailbox Recipient Permissions
+#Add Mailbox Recipient Permissions
 if ($null -ne $MailboxRecipientPermission) {foreach($User in $Users) {Add-RecipientPermission -Identity $Mailbox  -Trustee $User -AccessRights $MailboxRecipientPermission}}
