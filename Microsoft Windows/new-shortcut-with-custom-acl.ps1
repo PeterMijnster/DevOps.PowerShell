@@ -10,7 +10,7 @@ $ShortcutName = ""
 $Identity = "" #Everyone
 $FileSystemRights = "" #FullControl
 
-#Create Shortcut and Set New Shortcut ACL
+#Create Shortcut and Set Custom Shortcut ACL
 if (!(Test-Path "$CommonDesktop\Shortcut.lnk")) {
     #Create Shortcut
     $WScriptShell = New-Object -ComObject WScript.Shell
@@ -22,7 +22,7 @@ if (!(Test-Path "$CommonDesktop\Shortcut.lnk")) {
     $Shortcut.TargetPath = $ShortcutTarget
     $Shortcut.Save()
     
-    #Set New Shotcut ACL
+    #Set Custom Shotcut ACL
     $NewAcl = Get-Acl "$CommonDesktop\$ShortcutName.lnk"
     $NewAclIdentity = $Identity
     $NewAclFileSystemRights = $FileSystemRights

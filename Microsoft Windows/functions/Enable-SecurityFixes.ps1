@@ -1,4 +1,4 @@
-function Set-ProtocolSecurity{
+function Enable-SecurityFixes {
     #Protocol Security - Disable SSL 2.0
     $SChannelRegPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols"
     New-Item $SChannelRegPath -Name "SSL 2.0" -Force
@@ -61,4 +61,4 @@ function Set-ProtocolSecurity{
 }
 
 #Examples
-Set-ProtocolSecurity
+Enable-SecurityFixes

@@ -4,7 +4,7 @@ function Add-CustomMailboxPermissions {
         $MailboxAutomap,
         $MailboxPermission,
         $MailboxRecipientPermission,
-        $GroupDisplayName
+        $GroupDisplayName,
         $UserDisplayName
     )
 
@@ -14,13 +14,13 @@ function Add-CustomMailboxPermissions {
 
     #Add Mailbox Permissions
     if ($null -ne $MailboxPermission) {
-        foreach $User in $Users {
+        foreach ($User in $Users) {
             Add-MailboxPermission -Identity $Mailbox -User $User.UserPrincipalName -AccessRights $MailboxPermission -InheritanceType All -AutoMapping $MailboxAutomap
         }
     }
     #Add Mailbox Recipient Permissions
     if ($null -ne $MailboxRecipientPermission) {
-        foreach $User in $Users {
+        foreach ($User in $Users) {
             Add-RecipientPermission -Identity $Mailbox -Trustee $User.UserPrincipalName -AccessRights $MailboxRecipientPermission -Confirm:$false
         }
     }
