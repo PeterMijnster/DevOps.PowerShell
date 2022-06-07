@@ -10,10 +10,10 @@ function Get-CustomMailboxPermissions {
     if ($null -ne $UserDisplayName) {$Users = Get-AzureADUser -SearchString $UserDisplayName}
 
     #Get Mailbox Permissions
-    if (($null -eq $GroupDisplayName) -and ($null -eq $UserDisplayName)) {Get-MailboxPermission -Identity $Mailbox | fl -Property User, -AccessRights}
+    if (($null -eq $GroupDisplayName) -and ($null -eq $UserDisplayName)) {Get-MailboxPermission -Identity $Mailbox | Format-List -Property User, -AccessRights}
 
     #Get Mailbox Recipient Permissions
-    if (($null -eq $GroupDisplayName) -and ($null -eq $UserDisplayName)) {Get-RecipientPermission -Identity $Mailbox | fl -Property Trustee, AccessRights}
+    if (($null -eq $GroupDisplayName) -and ($null -eq $UserDisplayName)) {Get-RecipientPermission -Identity $Mailbox | Format-List -Property Trustee, AccessRights}
 
     #Get Mailbox Permissions and Recipient Permissions
     if ($null -ne $Users) {
