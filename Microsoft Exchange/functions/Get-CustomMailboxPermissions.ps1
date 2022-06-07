@@ -1,7 +1,7 @@
 function Get-CustomMailboxPermissions {
     Param (
         $Mailbox,
-        $GroupDisplayName
+        $GroupDisplayName,
         $UserDisplayName
     )
 

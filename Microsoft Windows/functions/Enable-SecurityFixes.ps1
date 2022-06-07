@@ -58,6 +58,13 @@ function Enable-SecurityFixes {
     New-ItemProperty -Path $SChannelRegPath"\TLS 1.3\Server" -Name DisabledByDefault -Value 0 -PropertyType DWORD -Force
     New-ItemProperty -Path $SChannelRegPath"\TLS 1.3\Client" -Name Enabled -Value 1 -PropertyType DWORD -Force
     New-ItemProperty -Path $SChannelRegPath"\TLS 1.3\Client" -Name DisabledByDefault -Value 0 -PropertyType DWORD -Force
+
+    #SMB Security - Disable SMB v1
+    Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
+
+    #SMB Security - Enable SMB Signing
+    Set-SmbServerConfiguration -EncryptData $true -Force
+    Set-SmbServerConfiguration -RequireSecuritySignature $true -Force
 }
 
 #Examples

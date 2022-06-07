@@ -1,4 +1,4 @@
-function Set-ProtocolSecurity{
+function Set-ProtocolSecurity {
     #Scan File Integrity and Repair Problems
     Start-Process "sfc.exe" -ArgumentList "/scannow"
     
@@ -12,7 +12,7 @@ function Set-ProtocolSecurity{
     Start-Process "ipconfig.exe" -ArgumentList "/flushdns"
     
     #Clear Event Viewer Logs
-    $Get-EventLog * | ForEach { Clear-EventLog $_.Log }
+    Get-EventLog * | ForEach { Clear-EventLog $_.Log }
 
     #Remove Temporary Files
     Get-ChildItem $Env:WINDIR\Temp | Remove-Item -Recurse -Force -ErrorAction Ignore
