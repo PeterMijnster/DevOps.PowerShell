@@ -9,7 +9,7 @@ function Add-CustomMailboxPermissions {
     )
 
     #Custom User Variables
-    if ($null -ne $GroupDisplayName) {$Users = Get-AzureADGroup -SearchString $GroupDisplayName| Get-AzureADGroupMember}
+    if ($null -ne $GroupDisplayName) {$Users = Get-AzureADGroup -SearchString $GroupDisplayName | Get-AzureADGroupMember}
     if ($null -ne $UserDisplayName) {$Users = Get-AzureADUser -SearchString $UserDisplayName}
 
     #Add Mailbox Permissions
