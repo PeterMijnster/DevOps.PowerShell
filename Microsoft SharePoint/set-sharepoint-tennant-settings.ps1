@@ -1,0 +1,1 @@
+Set-SPOTenant -DisableAddShortcutsToOneDrive $True
